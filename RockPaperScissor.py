@@ -1,5 +1,17 @@
 import random
 
+def getUserSelection():
+    selection = input("Enter a choice : (1. Rock, 2. Paper, 3. Scissor) \n")
+
+    while selection.isdigit():
+        selection = input("Please Enter a choice (AlphaNumeric!): (1. Rock, 2. Paper, 3. Scissor) \n")
+
+        if selection.isalpha():
+            break
+    
+    return selection
+
+
 def determineWinner(userAction, computerAction):
     if userAction == computerAction:
         print("Both players selected : " + userAction + ". It's a tie game")
@@ -24,7 +36,7 @@ def determineWinner(userAction, computerAction):
 
 
 while True:
-    userActionInput = input("Enter a choice : (1. Rock, 2. Paper, 3. Scissor) \n")
+    userActionInput = getUserSelection()
 
     possibleActions = ["Rock", "Paper", "Scissor"]
     computerAction = random.choice(possibleActions)
@@ -35,5 +47,5 @@ while True:
     determineWinner(userActionInput,computerAction)
 
     playAgain = input("Play again? \n")
-    if playAgain.lower() != "y":
+    if playAgain.lower() != "y" or playAgain.lower() != "yes":
         break
